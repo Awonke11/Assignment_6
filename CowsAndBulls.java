@@ -36,13 +36,14 @@ public class CowsAndBulls {
         this.guessedNumber = guessNumber;
         int bulls = NumberUtils.countMatches(this.guessedNumber, generatedNumber);
         int cows = NumberUtils.countIntersect(this.guessedNumber, generatedNumber);
-        this.maxGuess = this.maxGuess - 1;
 
-        return new Result(cows, bulls);
+        this.maxGuess = this.maxGuess - 1;
+        return new Result(cows - bulls, bulls);
     }
 
     // ^ End the game, returning the secretNumber
     public int giveUp() {
+        this.maxGuess = 0;
         return generatedNumber;
     }
 
